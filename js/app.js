@@ -42,6 +42,7 @@ class FormValidator {
         this.form.querySelectorAll("[name]").forEach((input) => {
           this.validateFields(input);
         });
+        return;
       }
       let formData = new FormData(this.form);
       alert(Array.from(formData));
