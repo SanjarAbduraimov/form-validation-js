@@ -45,6 +45,7 @@ class FormValidator {
       }
       let formData = new FormData(this.form);
       alert(Array.from(formData));
+      this.form.reset();
     });
   }
   togglePasswordVisibility() {
