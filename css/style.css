@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import "../css/normalize.css";
+@import "../css/variables.css";
+@import "../css/grid.css";
+@import "../css/form.css";
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: var(--mainFont);
+  margin: 50px;
+}
+
+form .row {
+  justify-content: center;
+}
+
+form .row>* {
+  margin: 1.2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+form .row>*>* {
+  flex: 1;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 3.3rem;
+  font-weight: 700;
+  line-height: 140%;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: var(--secondary);
+  color: var(--main);
+}
