@@ -6,22 +6,6 @@ const passwordField = form.password;
 const passwordRepeatField = form["confirm-password"];
 const textareaField = form.message;
 const submitBtn = form.querySelector("#submit-btn");
-
-// function validateTextarea() {
-//   const textareaValue = textareaInput.value.trim();
-
-//   if (textareaValue === "") {
-//     errorTextarea.textContent = "Textarea is required";
-//     return false;
-//   } else if (textareaValue.length < 100) {
-//     errorTextarea.textContent = "Textarea must be at least 100 characters long";
-//     return false;
-//   } else {
-//     errorTextarea.textContent = "";
-//     return true;
-//   }
-// }
-
 class FormValidator {
   constructor(form) {
     this.form = form;
@@ -34,6 +18,7 @@ class FormValidator {
     this.textareaIndicator();
     this.submitBtnHandler();
   }
+
   validateOnSubmit() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -49,6 +34,7 @@ class FormValidator {
       this.form.reset();
     });
   }
+
   togglePasswordVisibility() {
     let self = this;
     this.form.querySelectorAll(".password-toggle").forEach((btn) => {
@@ -58,6 +44,7 @@ class FormValidator {
       });
     });
   }
+
   submitBtnHandler() {
     let submitBtn = this.form.querySelector("[type='submit']");
     if (this.form.checkValidity()) {
@@ -66,6 +53,7 @@ class FormValidator {
       submitBtn.disabled = true;
     }
   }
+
   validateOnEntry() {
     let self = this;
     this.form.querySelectorAll("[name]").forEach((input) => {
@@ -80,6 +68,7 @@ class FormValidator {
       });
     });
   }
+
   textareaIndicator() {
     this.form.querySelectorAll("textarea").forEach((textarea) => {
       textarea.addEventListener("input", (event) => {
@@ -90,6 +79,7 @@ class FormValidator {
       });
     });
   }
+
   validatePasswordFields(field, passwordValue) {
     const symbolsRegex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     const numbersRegex = /[0-9]/;
@@ -118,14 +108,17 @@ class FormValidator {
       this.setStatus(field, null, "success");
     }
   }
+
   hasContainer(field) {
     return field.parentElement.getAttribute("class").includes("container");
   }
+
   getLabel(field) {
     return this.hasContainer(field)
       ? field.parentElement.previousElementSibling.innerText
       : field.previousElementSibling.innerText;
   }
+
   validateFields(field) {
     // Check presence of values
     let isPasswordField =
@@ -194,6 +187,7 @@ class FormValidator {
       ? field.parentElement.nextElementSibling
       : field.nextElementSibling;
   }
+
   setStatus(field, message, status) {
     const errorMessage = this.errorMessageField(field);
     const formWrapper = field.closest(".form__control--wrapper");
@@ -215,6 +209,7 @@ class FormValidator {
       return false;
     }
   }
+
   setVisibility(element) {
     const target =
       element.tagName.toLowerCase() === "i" ? element.parentNode : element;
@@ -227,5 +222,7 @@ class FormValidator {
   }
 }
 
-const validator = new FormValidator(form);
-validator.initialize();
+document.addEventListener("DOMContentLoaded", () => {
+  const validator = new FormValidator(form);
+  validator.initialize();
+});
