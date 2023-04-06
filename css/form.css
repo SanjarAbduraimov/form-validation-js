@@ -23,6 +23,7 @@ select:-webkit-autofill:focus {
   line-height: 140%;
   color: var(--primary);
   text-transform: capitalize;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .form__label:has(+ .form__control[required])::after,
@@ -166,7 +167,8 @@ select:-webkit-autofill:focus {
 }
 
 .feedback {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   font-family: var(--mainFont);
   font-style: normal;
   font-weight: 400;
@@ -179,7 +181,9 @@ select:-webkit-autofill:focus {
 }
 
 .feedback.show {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .valid {

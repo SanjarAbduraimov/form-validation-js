@@ -31,6 +31,7 @@ class FormValidator {
       }
       let formData = new FormData(this.form);
       alert(Array.from(formData));
+      console.log(Array.from(formData));
       this.form.reset();
     });
   }
